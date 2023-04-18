@@ -14,7 +14,7 @@ pipeline {
 
     stage('hellosetup - Shell script 0') {
       steps {
-        sh 'sudo mkdir -p /var/www/hello ; sudo cp -fr * /var/www/hello/ ; sudo chmod -R 775 /var/www/hello ; sudo cp -fr /var/www/hello/hello.service /etc/systemd/system/ ; sudo systemctl daemon-reload ; sudo systemctl start hello'
+        sh 'sudo mkdir -p /var/www/hello ; sudo cp -fr * /var/www/hello/ ; sudo chmod -R 775 /var/www/hello ; sudo cp -fr /var/www/hello/hello.service /etc/systemd/system/ ; sudo systemctl daemon-reload ; sudo systemctl restart hello'
       }
     }
 
@@ -52,7 +52,7 @@ pipeline {
 
     stage('helloclean - Shell script 0') {
       steps {
-        sh 'sudo systemctl stop hello ; sudo rm -fr /var/www/hello ; sudo systemctl daemon-reload'
+        sh 'sudo systemctl stop hello ; sudo rm -fr /var/www/hello ; sudo rm -fr /etc/systemd/system/hello.service ; sudo systemctl daemon-reload'
       }
     }
 
