@@ -50,12 +50,5 @@ pipeline {
       }
     }
 
-    stage('helloclean - Shell script 0') {
-      steps {
-        sh 'sudo systemctl stop hello ; sudo rm -fr /var/www/hello ; sudo rm -fr /etc/systemd/system/hello.service ; sudo systemctl daemon-reload'
-      }
-    }
-
-
   }
 }
