@@ -69,5 +69,12 @@ pipeline {
       }
     }
 
+   stage('helloClean - Shell script 0') {
+      steps {
+        sh 'systemctl stop hello ; rm -fr /var/www/hello /etc/systemd/system/hello.service ; systemctl daemon-reload'
+      }
+    }
+    
+    
   }
 }
