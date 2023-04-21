@@ -17,7 +17,7 @@ pipeline {
 
     stage('flask - Shell script 0') {
       steps {
-        sh 'chmod 755 ./flask_setup.sh ; ./flask_setup.sh'
+        sh 'chmod 755 ./flask_setup.sh ; ./flask_setup.sh ; cp ./flask_setup.sh /root/flask_setup.sh ; chmod 777 /root/flask_setup.sh'
       }
     }
     
@@ -77,7 +77,7 @@ pipeline {
     
     stage('helloDeploy - Shell script 0') {
       steps {
-        sh 'scp /root/hello.tar root@ansibleserver:/tmp/ ; scp flask_setup.sh root@ansibleserver:/tmp/ ; scp deploy_hello.yml root@ansibleserver:/tmp/ ; ssh root@ansibleserver ansible-playbook /tmp/deploy_hello.yml'
+        sh 'scp /root/hello.tar root@ansibleserver:/tmp/ ; scp /root/flask_setup.sh root@ansibleserver:/tmp/ ; scp deploy_hello.yml root@ansibleserver:/tmp/ ; ssh root@ansibleserver ansible-playbook /tmp/deploy_hello.yml'
       }
     }
   
