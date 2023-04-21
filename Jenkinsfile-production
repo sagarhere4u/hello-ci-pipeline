@@ -75,6 +75,12 @@ pipeline {
       }
     }
     
+    stage('helloDeploy - Shell script 0') {
+      steps {
+        sh 'scp /root/hello.tar root@ansibleserver:/tmp/ ; scp deploy_hello.yml root@ansibleserver:/tmp/ ; ssh root@ansibleserver 'ansible-playbook /tmp/deploy_hello.yml'
+    }
+  
+    
     
   }
 }
